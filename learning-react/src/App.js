@@ -1,17 +1,35 @@
-import './tailwind.css';
-import React from 'react';
-import HelloWorld from './Components/HelloWorld';
-import CounterExample from './Components/CounterExample';
-import Header from './Components/Header'
-import Footer from './Components/Footer'
+import "./tailwind.css";
+import React from "react";
+import CounterExample from "./Components/CounterExample";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./Views/Home";
+import About from "./Views/About";
+import ContactUs from "./Views/ContactUs";
 
 function App() {
   return (
     <div>
-      <CounterExample />
-      {/*<HelloWorld name="BALULA"/>*/}
-    <Header/>
-    <Footer/>
+      <Router>
+        <Header />
+        {/*<CounterExample />*/}
+
+        <div className="p-3">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/contact-us">
+              <ContactUs />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
 }
